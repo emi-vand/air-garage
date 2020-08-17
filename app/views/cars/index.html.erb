@@ -1,0 +1,9 @@
+<h1>All cars from your search</h1>
+
+<% @cars.each do |car| %>
+  <div class="card">
+    <%= car.make %>
+    <%= car.model %>
+    <%= car.location %>
+  </div>
+<% end %>
