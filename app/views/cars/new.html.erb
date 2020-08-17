@@ -7,7 +7,7 @@
   <%= f.input :color %>
   <%= f.input :price %>
   <%= f.input :location %>
-  <%# <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit "Add Car", class: "btn btn-primary"%>
 <% end %>
 

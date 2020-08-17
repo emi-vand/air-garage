@@ -4,3 +4,10 @@
 <p>Seats: <%= @car.seats %></p>
 <p>Price per day: £<%= @car.price %></p>
 <p>Location: <%= @car.location %></p>
+
+<% if @car.photos.attached? %>
+  <% @car.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+  <% end %>
+<% end %>
+  
