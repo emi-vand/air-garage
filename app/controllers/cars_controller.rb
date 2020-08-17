@@ -27,7 +27,6 @@ class CarsController < ApplicationController
   def edit
   end
 
-
   def destroy
     @car.destroy
     redirect_to cars_path
@@ -47,5 +46,5 @@ class CarsController < ApplicationController
   def set_car
     @car = Car.find(params[:id])
   end
-  
+
 end

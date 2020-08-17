@@ -1,1 +1,9 @@
 // Specific CSS for your home-page
+.container-home {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), asset-url('home-background');
+  background-size: cover;
+  padding: 15%;
+}

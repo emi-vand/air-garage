@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class= "container-home">
+  <div class="container-home-content">
+  <h1> Welcome to Air Garage </h1>
+
+  <%= form_tag root_path, class: "search-bar", method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "search-input",
+      placeholder: "Find a car" %>
+      <%= button_tag( :class => "btn search-btn") do%>
+        <i class="fa fa-search"> </i>
+      <% end %>
+  <% end %>
+</div>
+</div>

@@ -1,0 +1,40 @@
+<div class="navbar-wagon sticky-top">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <i class="fas fa-car-alt"></i>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+  <!-- Search form -->
+    <%= form_tag root_path, class: "navbar-wagon-search", method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "navbar-wagon-search-input",
+      placeholder: "Find a car" %>
+      <%= button_tag( :class => "btn navbar-wagon-search-btn") do%>
+        <i class="fa fa-search"> </i>
+      <% end %>
+    <% end %>
+
+    <!-- Notification -->
+
+
+
+    <!-- Button (call-to-action) -->
+
+    <%= link_to "Sign In", user_session_path, class: "btn-sign-in" %>
+
+  <!-- Dropdown list -->
+
+    <div class="dropdown">
+      <i class="dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><%= link_to "List new car", user_session_path %></li>
+        <li><%= link_to "View cars", cars_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
