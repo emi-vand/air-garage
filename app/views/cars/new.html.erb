@@ -1,0 +1,14 @@
+<h1>Add a new Car</h1>
+
+<%= simple_form_for @car do |f| %>
+  <%= f.input :make %>
+  <%= f.input :model %>
+  <%= f.input :seats %>
+  <%= f.input :color %>
+  <%= f.input :price %>
+  <%= f.input :location %>
+  <%# <%= f.input :photo, as: :file %>
+  <%= f.submit "Add Car", class: "btn btn-primary"%>
+<% end %>
+
+<%= link_to "Back to cars", cars_path, class: "btn btn-primary"  %>
