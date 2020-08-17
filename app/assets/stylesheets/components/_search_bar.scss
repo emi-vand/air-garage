@@ -12,6 +12,9 @@
   left: 370px;
   top: -3px;
   z-index: 1;
+  &:hover {
+    color: rgb(79, 150, 250);
+  }
 }
 .search-input {
   flex: 0 1 600px;
@@ -26,5 +29,10 @@
   outline: none;
   &:focus {
     border: 1px solid #CCCCCC;
+    box-shadow: 0 0 0 0.1rem rgba(119, 104, 113, 0.1);
+    &::placeholder {
+      color: rgb(18, 17, 19);
+    }
   }
+
 }
