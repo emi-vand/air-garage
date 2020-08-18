@@ -16,12 +16,12 @@ class CarsController < ApplicationController
     if @car.save
       redirect_to car_path(@car)
     else
-      render 'new'
+      render :new
     end
   end
 
   def show
-    # @rental = Rental.new
+    @rental = Rental.new
   end
 
   def edit
@@ -33,8 +33,11 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car.update(car_params)
-    redirect_to @car
+    if @car.update(car_params)
+      redirect_to @car
+    else
+      render :edit
+    end
   end
 
   private
