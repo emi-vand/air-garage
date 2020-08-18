@@ -4,6 +4,7 @@
 <p>Seats: <%= @car.seats %></p>
 <p>Price per day: £<%= @car.price %></p>
 <p>Location: <%= @car.location %></p>
+<p>Owner: <%= @car.user.email %></p>
 
 <% if @car.photos.attached? %>
   <% @car.photos.each do |photo| %>
