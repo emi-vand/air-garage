@@ -1,10 +1,9 @@
-
 <div class="container my-5 p-5">
   <h1 class="text-center">All cars from your search</h1>
-
+  <h1 class="text-center"> Super cool filter section </h1>
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
-    <div class="col-4 my-3">
+    <div class="col-4 my-3 align-content-stretch">
       <div class="card" style="width: 18rem;">
         <% if car.photos.attached? %>
           <%= cl_image_tag car.photos.first.key, class: "card-img-top" %>
@@ -12,7 +11,11 @@
         <div class="card-body">
           <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
           <p class="card-text"> <%= car.location %> </p>
+          <div>
           <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
+          <%= link_to "Edit", edit_car_path(car) %>
+          <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"} %>
+        </div>
         </div>
         </div>
       </div>
