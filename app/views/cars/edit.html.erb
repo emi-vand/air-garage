@@ -1,0 +1,28 @@
+<div class="new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+        <h1>Edit Car</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+
+<%= simple_form_for @car do |f| %>
+  <%= f.input :make %>
+  <%= f.input :model %>
+  <%= f.input :seats %>
+  <%= f.input :color %>
+  <%= f.input :price %>
+  <%= f.input :location %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit "Update", class: "btn btn-primary"%>
+<% end %>
+
+        </div>
+      </div>
+      <div class="back-to-cars">
+      <%= link_to "Back to cars", cars_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

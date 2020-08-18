@@ -6,6 +6,8 @@
     <%= car.model %>
     <%= car.location %>
     <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill %>
+    <%= link_to "Delete", car_path(car), method: :delete %>
+    <%= link_to "Edit", edit_car_path(car) %>
   </div>
 <% end %>
 
