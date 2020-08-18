@@ -1,0 +1,10 @@
+<%= simple_form_for @car do |f| %>
+  <%= f.input :make %>
+  <%= f.input :model %>
+  <%= f.input :seats %>
+  <%= f.input :color %>
+  <%= f.input :price %>
+  <%= f.input :location %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
