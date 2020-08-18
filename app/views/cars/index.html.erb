@@ -1,21 +1,21 @@
-<div class="container p-3">
+
+<div class="container my-5 p-5">
   <h1 class="text-center">All cars from your search</h1>
 
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
-    <div class="col-sm-6 col-lg-3 my-3">
-
+    <div class="col-4 my-3">
       <div class="card" style="width: 18rem;">
         <% if car.photos.attached? %>
-          <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+          <%= cl_image_tag car.photos.first.key, class: "card-img-top" %>
         <% end %>
         <div class="card-body">
           <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
           <p class="card-text"> <%= car.location %> </p>
           <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
         </div>
+        </div>
       </div>
     <% end %>
     </div>
   </div>
-</div>

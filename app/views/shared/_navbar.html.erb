@@ -1,4 +1,4 @@
-<div class="navbar-wagon sticky-top">
+<div class="navbar-wagon fixed-top">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <i class="fas fa-car-alt"></i>
@@ -33,11 +33,10 @@
           <li><%= link_to "View cars", cars_path %></li>
         </ul>
       </div>
+
     <% else %>
       <%= link_to "Sign In", user_session_path, class: "btn-sign-in" %>
     <% end %>
 
-
   </div>
-</div>
 </div>
