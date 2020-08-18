@@ -32,9 +32,11 @@
       <i class="dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to "List new car", user_session_path %></li>
-        <li><%= link_to "View cars", cars_path %></li>
+        <li><%= link_to "View cars", cars_path %></li></ul>
+        <% if user_signed_in?  %>
+        <li><%= link_to 'Profile', user_path(current_user) %></li>
+        <% end %>
       </ul>
     </div>
-  </div>
 </div>
 </div>

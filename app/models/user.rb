@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :photo, :first_name, :last_name, required: true
-
+  validates :photo, :first_name, :last_name, presence: true
 
 end
