@@ -1,13 +1,23 @@
-<h1>All cars from your search</h1>
 
-<% @cars.each do |car| %>
-  <div class="card">
-    <%= car.make %>
-    <%= car.model %>
-    <%= car.location %>
-    <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill %>
-    <%= link_to "Delete", car_path(car), method: :delete %>
-    <%= link_to "Edit", edit_car_path(car) %>
+<div class="container my-5 p-5">
+  <h1 class="text-center">All cars from your search</h1>
+
+  <div class="row justify-content-center">
+    <% @cars.each do |car| %>
+    <div class="col-4 my-3">
+      <div class="card" style="width: 18rem;">
+        <% if car.photos.attached? %>
+          <%= cl_image_tag car.photos.first.key, class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+          <p class="card-text"> <%= car.location %> </p>
+          <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
+          <%= link_to "Delete", car_path(car), method: :delete %>
+          <%= link_to "Edit", edit_car_path(car) %>
+        </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
   </div>
-<% end %>
-

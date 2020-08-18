@@ -21,7 +21,7 @@ class CarsController < ApplicationController
   end
 
   def show
-    # @user = User.find()
+    # @rental = Rental.new
   end
 
   def edit
