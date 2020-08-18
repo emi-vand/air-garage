@@ -13,8 +13,6 @@
           <p class="card-text"> <%= car.location %> </p>
           <div>
           <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
-          <%= link_to "Edit", edit_car_path(car) %>
-          <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"} %>
         </div>
         </div>
         </div>
