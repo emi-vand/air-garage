@@ -3,7 +3,7 @@
   <h1 class="text-center"> Super cool filter section </h1>
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
-    <div class="col-4 my-3 align-content-stretch">
+    <div class="col-4 my-3">
       <div class="card" style="width: 18rem;">
         <% if car.photos.attached? %>
           <%= cl_image_tag car.photos.first.key, class: "card-img-top" %>
