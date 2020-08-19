@@ -5,23 +5,27 @@
 <p>Seats: <%= @car.seats %></p>
 <p>Price per day: £<%= @car.price %></p>
 <p>Location: <%= @car.location %></p>
-<p>Owner: <%= @car.user.email %></p>
+<p>Owner: <%= @car.user.first_name %> <%= @car.user.last_name %></p>
 
-<% if @car.photos.attached? %>
-  <% @car.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+<div class="col-md-9 p-3 car-photos">
+  <% if @car.photos.attached? %>
+    <% @car.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 250, crop: :fill, class: "pr-3 car-image" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
+<div class="editbuttons ml-4">
+  <%= link_to "Edit your car", edit_car_path, class: "btn btn-primary" %>
+  <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
+</div>
 
-<%= link_to "Edit your car", edit_car_path %>
-
-<%= simple_form_for [@car, @rental] do |f| %>
-  <%= f.input :pick_up %>
-  <%= f.input :drop_off %>
-  <%= f.button :submit, class: "btn btn-primary mb-4" %>
-<% end %>
-
-<%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"} %>
+<div class="rental-form">
+  <%= simple_form_for [@car, @rental] do |f| %>
+    <%= f.input :pick_up, as: :datetime, html5: true %>
+    <%= f.input :drop_off, as: :datetime, html5: true %>
+    <%= f.button :submit, class: "btn btn-primary mb-4" %>
+  <% end %>
+</div>
 
 </div>
