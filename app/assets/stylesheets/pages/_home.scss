@@ -1,11 +1,16 @@
 // Specific CSS for your home-page
 .container-home {
-  height: 80vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), asset-url('home-background');
   background-size: cover;
   padding: 15%;
+}
+
+.container-home-content h1 {
+  color: black;
+  font-family: Arial;
 }
 .wrapper {
   margin: 0px 0px 64.7px 0px;
