@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
   before_action :set_rental, only: [:show, :edit, :destroy, :update]
-  
+
   def index
     @rentals = Rental.all
   end
@@ -12,7 +12,7 @@ class RentalsController < ApplicationController
     @car = Car.find(params[:car_id])
     @rental = Rental.new
   end
-  
+
   def create
     @rental = Rental.new(rental_params)
     @user = current_user
@@ -20,7 +20,7 @@ class RentalsController < ApplicationController
     @rental.car = @car
     @rental.user = @user
     if @rental.save
-      redirect_to car_path(@car)  
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -38,7 +38,7 @@ class RentalsController < ApplicationController
   #   @rental.destroy
   #   redirect_to car_path
   # end
-   
+
   private
 
   def set_rental
@@ -48,5 +48,5 @@ class RentalsController < ApplicationController
   def rental_params
     params.require(:rental).permit(:car_id, :user_id, :pick_up, :drop_off)
   end
-  
+
 end
