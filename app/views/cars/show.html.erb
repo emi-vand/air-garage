@@ -16,8 +16,8 @@
 <%= link_to "Edit your car", edit_car_path %>
 
 <%= simple_form_for [@car, @rental] do |f| %>
-  <%= f.input :pick_up %>
-  <%= f.input :drop_off %>
+  <%= f.input :pick_up, as: :datetime, html5: true %>
+  <%= f.input :drop_off, as: :datetime, html5: true %>
   <%= f.button :submit, class: "btn btn-primary mb-4" %>
 <% end %>
 
