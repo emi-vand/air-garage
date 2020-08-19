@@ -18,19 +18,43 @@
   </div>
 
     <div class="row justify-content-between text-center">
-      <div class="col-md-5 p-3">
+      <div class="col-lg-5 p-3">
         <h4> Rental </h4>
-        <p> image to be added </p>
+          <% @user.rentals.each do |rental| %>
+            <details>
+              <summary> <%= rental.car.make %> </summary>
+              <div class="container bg-light">
+                <div class="row">
+                <div class="col-6">
+               <% if rental.car.photos.attached? %>
+                <%= link_to car_path(rental.car) do  %>
+                  <%= cl_image_tag rental.car.photos.first.key, class: "card-img-top" %>
+                <% end %>
+              <% end %>
+              </div>
+              <div class="col-6 date-content">
+              <p> Pick-up: <%= rental.pick_up %> </p>
+              <p> Drop-off: <%= rental.drop_off %> </p>
+              </div>
+            </div>
+            </div>
+            </details>
+        <% end %>
       </div>
-      <div class="col-md-5 p-3">
+
+      <div class="col-lg-5 p-3">
         <h4> Listing </h4>
-        <p> image to be added </p>
+          <% @user.cars.each do |car| %>
+
+          <details>
+           <summary> <%= car.make %> <%= car.model %> </summary>
+            <% if car.photos.attached? %>
+            <%= link_to car_path(car) do  %>
+              <%= cl_image_tag car.photos.first.key, class: "card-img-top" %>
+            <% end %>
+            <% end %>
+          </details>
+        <% end %>
       </div>
     </div>
   </div>
-
-
-<%# display all rentals of this user %>
-
-<%#  user.cars.each %>
-<%#  user.rentals.each %>
