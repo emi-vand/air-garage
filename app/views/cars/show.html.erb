@@ -17,13 +17,13 @@
   <% end %>
 </div>
 
-<% if @car.user == current_user %>
 <div class="editbuttons ml-4">
-  <%= link_to "Back to cars list", edit_car_path, class: "btn btn-primary" %>
+  <%= link_to "Back to cars list", cars_path, class: "btn btn-primary" %>
+<% if @car.user == current_user %>
   <%= link_to "Edit your car", edit_car_path, class: "btn btn-primary" %>
   <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
-</div>
 <% end %>
+</div>
 </div>
 
 
