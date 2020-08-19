@@ -1,5 +1,7 @@
 <div class="container">
-<h1><%= @car.make + @car.model %></h1>
+<div class="row p-4">
+<div class="col-lg-6">
+<h1><%= @car.make + " " + @car.model %></h1>
 
 <p>Colour: <%= @car.color %></p>
 <p>Seats: <%= @car.seats %></p>
@@ -15,11 +17,18 @@
   <% end %>
 </div>
 
+<% if @car.user == current_user %>
 <div class="editbuttons ml-4">
   <%= link_to "Edit your car", edit_car_path, class: "btn btn-primary" %>
   <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
 </div>
+<% end %>
+</div>
 
+
+
+<% if @car.user != current_user %>
+<div class="col-lg-6">
 <div class="rental-form">
   <%= simple_form_for [@car, @rental] do |f| %>
     <%= f.input :pick_up, as: :datetime, html5: true %>
@@ -27,5 +36,7 @@
     <%= f.button :submit, class: "btn btn-primary mb-4" %>
   <% end %>
 </div>
-
+</div>
+<% end %>
+</div>
 </div>

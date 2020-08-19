@@ -1,12 +1,12 @@
 <div class="container my-5 p-5">
-  <h1 class="text-center">All cars from your search</h1>
-  <h1 class="text-center"> Super cool filter section </h1>
+  <h1 class="text-center">All cars</h1>
+  <h4 class="text-center">Find your favourite car to rent</h4>
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
     <div class="col-4 my-3">
-      <div class="card" style="width: 18rem;">
+      <div class="card rounded" style="width: 18rem;">
         <% if car.photos.attached? %>
-          <%= cl_image_tag car.photos.first.key, class: "card-img-top" %>
+          <div class="card-bg rounded" style="background-image: url(<%= cl_image_path car.photos.first.key%>)"></div>
         <% end %>
         <div class="card-body">
           <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
