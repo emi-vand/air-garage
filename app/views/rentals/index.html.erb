@@ -1,0 +1,25 @@
+<h1> Rentals </h1>
+<div class="container">
+<div class="row justify-content-around">
+<% @rentals.each do |rental| %>
+  <div class="col-xs-6 col-lg-3">
+    <div class="card" style="width: 18rem;">
+      <%= cl_image_tag rental.car.photos.first.key, class: "card-img-top" %>
+      <div class="card-body">
+        <h5 class="card-title"> <%= rental.car.make %> <%= rental.car.model %></h5>
+        <p class="card-text"></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> User: <%= rental.user.email %></li>
+        <li class="list-group-item"> Pick up: <%= rental.pick_up %> </li>
+        <li class="list-group-item"> Drop off: <%= rental.drop_off %></li>
+      </ul>
+      <div class="card-body">
+        <%= link_to 'View car', car_path(rental.car) %>
+      </div>
+    </div>
+      </div>
+  <% end %>
+
+</div>
+</div>
