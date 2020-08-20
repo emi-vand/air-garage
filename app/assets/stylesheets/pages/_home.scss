@@ -16,3 +16,13 @@
 .wrapper {
   margin: 0px 0px 64.7px 0px;
    }
+
+.rounded-right {
+    border-top-right-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+}
+
+.rounded-left {
+    border-top-left-radius: 2px !important;
+    border-bottom-left-radius: 2px !important;
+}

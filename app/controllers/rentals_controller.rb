@@ -6,6 +6,7 @@ class RentalsController < ApplicationController
   end
 
   def show
+    @rentals = Rental.find(params[:id])
   end
 
   def new
@@ -21,7 +22,7 @@ class RentalsController < ApplicationController
     @rental.user = @user
     @rental.calculated_price = @car.price * (@rental.drop_off-@rental.pick_up)
     if @rental.save
-      redirect_to user_path(current_user)
+      redirect_to rental_path(@rental)
     else
       render "cars/show"
     end

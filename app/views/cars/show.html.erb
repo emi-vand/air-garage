@@ -22,7 +22,7 @@
   <%= link_to "Back to cars list", cars_path, class: "btn btn-primary" %>
 <% if @car.user == current_user %>
   <%= link_to "Edit your car", edit_car_path, class: "btn btn-primary" %>
-  <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
+  <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure you want to delete your car?"}, class: "btn btn-primary" %>
 <% end %>
 </div>
 </div>
@@ -31,10 +31,11 @@
 
 <% if @car.user != current_user %>
 <div class="col-lg-6">
-<div class="rental-form">
+<div class="rental-form" id="rental_form">
   <%= simple_form_for [@car, @rental] do |f| %>
-    <%= f.input :pick_up, as: :date, html5: true %>
-    <%= f.input :drop_off, as: :date, html5: true %>
+    <%= f.input :pick_up, as: :date, html5: true, id:"rental_pick_up" %>
+    <%= f.input :drop_off, as: :date, html5: true, id:"rental_drop_off" %>
+    <p id="rental_price"> Total Price: £ <%= @rental.calculated_price %></p>
     <%= f.button :submit, class: "btn btn-primary mb-4" %>
   <% end %>
 </div>

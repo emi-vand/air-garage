@@ -73,10 +73,10 @@
   flex: 0 1 300px;
   transition: all 0.15s ease;
   line-height: 40px;
+  width: 120px;
   font-weight: lighter;
   color: #666666;
   border: 1px solid #E6E6E6;
-  border-radius: 5px;
   padding: 0 10px;
   font-size: 14px;
   outline: none;
@@ -124,4 +124,14 @@
   &:focus {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
+}
+
+.nav-rounded-right {
+    border-top-right-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+}
+
+.nav-rounded-left {
+    border-top-left-radius: 2px !important;
+    border-bottom-left-radius: 2px !important;
 }
