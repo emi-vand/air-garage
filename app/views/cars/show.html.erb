@@ -1,53 +1,54 @@
 <div class="container">
-<div class="row p-4">
-<div class="col-lg-6">
+  <div class="row p-4">
+    <div class="col-lg-6 bg-light shadow p-3">
+      <div class="car-description">
+        <h1><%= @car.make %> <%= @car.model %></h1>
+          <% @reviews.each do |review| %>
+            <% if review.rating <= 1  %>
+              <%= image_tag "1star.png", alt: "alttext" %>
+              <% elsif review.rating <= 2 %>
+              <%= image_tag "2star.png", alt: "alttext" %>
+              <% elsif review.rating <= 3 %>
+              <%= image_tag "3star.png", alt: "alttext" %>
+              <% elsif review.rating <= 4 %>
+              <%= image_tag "4star.png", alt: "alttext" %>
+              <% else %>
+              <%= image_tag "5star.png", alt: "alttext" %>
+              <% end %>
+          <% end %>
+          <p> </p>
 
-<h1><%= @car.make + " " + @car.model %></h1>
+        
+        <p>Listed by: <%= link_to user_path(@car.user) do %>
+           <%= @car.user.first_name %> <%= @car.user.last_name %> <%= cl_image_tag @car.user.photo.key, class: "avatar" %>
+            <% end %>
+          </p>
 
-<% @reviews.each do |review| %>
-  <% if review.rating <= 1  %>
-    <%= image_tag "1star.png", alt: "alttext" %>
-    <% elsif review.rating <= 2 %>
-    <%= image_tag "2star.png", alt: "alttext" %>
-    <% elsif review.rating <= 3 %>
-    <%= image_tag "3star.png", alt: "alttext" %>
-    <% elsif review.rating <= 4 %>
-    <%= image_tag "4star.png", alt: "alttext" %>
-    <% else %>
-    <%= image_tag "5star.png", alt: "alttext" %>
-    <% end %>
-<% end %>
-<p> </p>
+        <p>Colour: <%= @car.color %></p>
+        <p>Seats: <%= @car.seats %></p>
+        <p>Price per day: £<%= @car.price.round %></p>
+        <p>Location: <%= @car.location %></p>
+      </div>
 
-<p>Colour: <%= @car.color %></p>
-<p>Seats: <%= @car.seats %></p>
-<p>Price per day: £<%= @car.price %></p>
-<p>Location: <%= @car.location %></p>
-<p>Owner: <%= @car.user.first_name %> <%= @car.user.last_name %></p>
+      <div class="my-2">
+        <%= render 'carousel' %>
+      </div>
 
-<div class="col-md-9 p-3 car-photos">
-  <% if @car.photos.attached? %>
-    <% @car.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 250, crop: :fill, class: "pr-3 car-image" %>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="editbuttons ml-4">
-  <%= link_to "Back to cars list", cars_path, class: "btn btn-primary" %>
-<% if @car.user == current_user %>
-  <%= link_to "Edit your car", edit_car_path, class: "btn btn-primary" %>
-  <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
-<% end %>
-</div>
-</div>
+      <div class="editbuttons ">
+        <%= link_to "Back to cars list", cars_path, class: "btn btn-primary" %>
+      <% if @car.user == current_user %>
+        <%= link_to "Edit your car", edit_car_path, class: "btn btn-info" %>
+        <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      <% end %>
+      </div>
+    </div>
 
 <% if @car.user != current_user %>
 <div class="col-lg-6">
 <div class="rental-form">
   <%= simple_form_for [@car, @rental] do |f| %>
-    <%= f.input :pick_up, as: :datetime, html5: true %>
-    <%= f.input :drop_off, as: :datetime, html5: true %>
+    <%= f.input :pick_up, as: :date, html5: true %>
+    <%= f.input :drop_off, as: :date, html5: true %>
     <%= f.button :submit, class: "btn btn-primary mb-4" %>
   <% end %>
 </div>
@@ -57,3 +58,5 @@
 </div>
 
 </div>
+
+

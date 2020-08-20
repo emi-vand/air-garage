@@ -8,16 +8,31 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
   <!-- Search form -->
-    <%= form_tag root_path, class: "navbar-wagon-search rounded", method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
+ <%= form_tag cars_path, class: "navbar-wagon-search rounded", method: :get do %>
+      <%= text_field_tag :make,
+      params[:make],
       class: "navbar-wagon-search-input",
-      placeholder: "Find a car" %>
+      placeholder: "Make" %>
+
+        <%= text_field_tag :min_price,
+      params[:min_price],
+      class: "navbar-wagon-search-input",
+      placeholder: "Min Price" %>
+
+       <%= text_field_tag :max_price,
+      params[:max_price],
+      class: "navbar-wagon-search-input",
+      placeholder: "Max Price" %>
+
+       <%= text_field_tag :location,
+      params[:location],
+      class: "navbar-wagon-search-input",
+      placeholder: "Location" %>
+
       <%= button_tag( :class => "btn navbar-wagon-search-btn") do%>
         <i class="fa fa-search"> </i>
       <% end %>
-    <% end %>
-
+  <% end %>
     <!-- Notification -->
 
 
@@ -27,7 +42,11 @@
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to sign out?"} , class: "btn-sign-in rounded" %>
       <!-- Dropdown list -->
       <div class="dropdown">
+      <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class: "dropdown-toggle avatar", data: { toggle: 'dropdown' } %>
+      <%# <% else %>
+        <%# <%= image_tag("default-avatar.png"), class: "dropdown-toggle avatar", data: { toggle: 'dropdown' } %>
+      <% end %>
         <!-- <i class="dropdown-toggle" data-toggle="dropdown"></i> -->
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu rounded">
           <li><%= link_to "List new car", new_car_path %></li>

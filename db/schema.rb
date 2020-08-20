@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_134712) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
@@ -97,10 +99,12 @@ ActiveRecord::Schema.define(version: 2020_08_20_134712) do
   create_table "rentals", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "car_id", null: false
-    t.datetime "pick_up"
-    t.datetime "drop_off"
+    t.date "pick_up"
+    t.date "drop_off"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "status", default: false
+    t.integer "calculated_price"
     t.index ["car_id"], name: "index_rentals_on_car_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end

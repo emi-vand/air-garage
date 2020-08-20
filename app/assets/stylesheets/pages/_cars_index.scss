@@ -5,3 +5,22 @@ body {
 a:hover {
   text-decoration: none;
 }
+
+.index-container{
+  display:flex;
+}
+
+.cars-container {
+  flex-grow: 1;
+}
+
+.cards-content {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#map {
+  position: sticky;
+  top: 80px;
+}

@@ -1,44 +1,57 @@
-<div class="container my-5 p-5">
-  <h1 class="text-center">All cars</h1>
-  <h4 class="text-center">Find your favourite car to rent</h4>
-  <div class="row justify-content-center">
-    <% @cars.each do |car| %>
-      <div class="col-4 my-3">
-        <div class="card rounded" style="width: 18rem;">
-          <% if car.photos.attached? %>
-            <div class="card-bg rounded" style="background-image: url(<%= cl_image_path car.photos.first.key%>)"></div>
-          <% end %>
-        <div class="card-body">
+<div class="index-container pl-3 ">
 
-            <% if car.average_rating <= 1  %>
-              <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
-                <%= image_tag "1star.png", alt: "alttext" %>
-              <% elsif car.average_rating <= 2 %>
-                <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
-                  <%= image_tag "2star.png", alt: "alttext" %>
-              <% elsif car.average_rating <= 3 %>
-                <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
-                  <%= image_tag "3star.png", alt: "alttext" %>
-              <% elsif car.average_rating <= 4 %>
-                <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
-                  <%= image_tag "4star.png", alt: "alttext" %>
-              <% else %>
-                <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
-                  <%= image_tag "5star.png", alt: "alttext" %>
-            <% end %>
-            <p> </p>
+    <div class="cars-container">
+      <div class="pl-3 mt-3">
+        <h2>All cars</h2>
+        <h5> Find your favourite car to rent</h5>
+      </div>
 
-            <p class="card-text"> <%= car.location %> </p>
-            <div class="card-bottom-section">
-              <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
-              <p> <%= car.price %> £ per day </p>
-              <% if car.user.photo.attached? %>
-              <%= cl_image_tag car.user.photo.key, class: "avatar-large card-avatar" %>
+      <div class="cards-content mt-4">
+        <% @cars.each do |car| %>
+          <div class="col-4 mb-2">
+            <div class="card rounded" style="width: 18rem;">
+              <% if car.photos.attached? %>
+                <div class="card-bg rounded" style="background-image: url(<%= cl_image_path car.photos.first.key%>)"></div>
               <% end %>
+              <div class="card-body">
+                  <% if car.average_rating <= 1  %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "1star.png", alt: "alttext" %>
+                  <% elsif car.average_rating <= 2 %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "2star.png", alt: "alttext" %>
+                  <% elsif car.average_rating <= 3 %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "3star.png", alt: "alttext" %>
+                  <% elsif car.average_rating <= 4 %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "4star.png", alt: "alttext" %>
+                  <% else %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "5star.png", alt: "alttext" %>
+                <% end %>
+                <p> </p>
+                <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                <p class="card-text"> <%= car.location %> </p>
+                  <div class="card-bottom-section">
+                    <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
+                    <p> <%= car.price %> £ per day </p>
+                    <% if car.user.photo.attached? %>
+                    <%= cl_image_tag car.user.photo.key, class: "avatar-large card-avatar" %>
+                    <% end %>
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
+
+      <div id="map"
+        style="width: 40%; height: calc(92vh - 80px);"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
 </div>
-</div>
+
