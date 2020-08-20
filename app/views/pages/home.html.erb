@@ -3,32 +3,34 @@
   <h1> Welcome to Air Garage </h1>
 
   <%= form_tag cars_path, class: "search-bar", method: :get do %>
-      <%= text_field_tag :make,
-      params[:make],
-      class: "search-input",
-      placeholder: "Make" %>
+    <%= text_field_tag :make,
+    params[:make],
+    class: "search-input",
+    placeholder: "Make" %>
 
-       <%= text_field_tag :min_price,
-      params[:min_price],
-      class: "search-input",
-      placeholder: "Min Price" %>
+    <%= text_field_tag :min_price,
+    params[:min_price],
+    class: "search-input",
+    placeholder: "Min Price" %>
 
-       <%= text_field_tag :max_price,
-      params[:max_price],
-      class: "search-input",
-      placeholder: "Max Price" %>
+    <%= text_field_tag :max_price,
+    params[:max_price],
+    class: "search-input",
+    placeholder: "Max Price" %>
 
-       <%= text_field_tag :location,
-      params[:location],
-      class: "search-input",
-      placeholder: "Location" %>
+    <%= text_field_tag :location,
+    params[:location],
+    class: "search-input",
+    placeholder: "Location" %>
 
-      <%= button_tag( :class => "btn navbar-wagon-search-btn") do%>
-        <i class="fa fa-search"> </i>
-      <% end %>
+    <%= button_tag( :class => "btn navbar-wagon-search-btn") do%>
+      <i class="fa fa-search"> </i>
+    <% end %>
   <% end %>
 
-
+  <div class="text-center">
+    <%= link_to "View all cars", cars_path, class: "btn btn-medium" %>
+  </div>
   
 </div>
 </div>
