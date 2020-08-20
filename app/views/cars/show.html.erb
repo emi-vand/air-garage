@@ -4,6 +4,21 @@
 
 <h1><%= @car.make + " " + @car.model %></h1>
 
+<% @reviews.each do |review| %>
+  <% if review.rating <= 1  %>
+    <%= image_tag "1star.png", alt: "alttext" %>
+    <% elsif review.rating <= 2 %>
+    <%= image_tag "2star.png", alt: "alttext" %>
+    <% elsif review.rating <= 3 %>
+    <%= image_tag "3star.png", alt: "alttext" %>
+    <% elsif review.rating <= 4 %>
+    <%= image_tag "4star.png", alt: "alttext" %>
+    <% else %>
+    <%= image_tag "5star.png", alt: "alttext" %>
+    <% end %>
+<% end %>
+<p> </p>
+
 <p>Colour: <%= @car.color %></p>
 <p>Seats: <%= @car.seats %></p>
 <p>Price per day: £<%= @car.price %></p>
@@ -26,8 +41,6 @@
 <% end %>
 </div>
 </div>
-
-
 
 <% if @car.user != current_user %>
 <div class="col-lg-6">

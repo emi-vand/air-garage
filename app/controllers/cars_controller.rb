@@ -22,6 +22,7 @@ class CarsController < ApplicationController
 
   def show
     @rental = Rental.new
+    @reviews = @car.rentals&.map { |rental| rental.review }
   end
 
   def edit
