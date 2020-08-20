@@ -1,12 +1,14 @@
 <div class="index-container pl-3 ">
-    <div class="cards mt-4">
 
-      <h2>All cars</h2>
-      <h5> Find your favourite car to rent</h5>
+    <div class="cars-container">
+      <div class="pl-3 mt-3">
+        <h2>All cars</h2>
+        <h5> Find your favourite car to rent</h5>
+      </div>
 
-      <div class="row justify-content-center">
+      <div class="cards-content mt-4">
         <% @cars.each do |car| %>
-          <div class="col-4 my-2">
+          <div class="col-4 mb-2">
             <div class="card rounded" style="width: 18rem;">
               <% if car.photos.attached? %>
                 <div class="card-bg rounded" style="background-image: url(<%= cl_image_path car.photos.first.key%>)"></div>
@@ -29,7 +31,7 @@
     </div>
 
       <div id="map"
-        style="width: 40%; height: 635px;"
+        style="width: 40%; height: calc(92vh - 80px);"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
