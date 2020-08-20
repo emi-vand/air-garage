@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :rentals, only: [:update, :edit, :destroy] do
-    post :approve
+    patch :approve, to: "rentals#approve"
+    patch :decline, to: "rentals#decline"
   end
+  
   # do
   #   users do
   #     post :approve

@@ -13,5 +13,4 @@ class Rental < ApplicationRecord
       errors.add(:drop_off, "must be after the start date")
     end
   end
-
 end
