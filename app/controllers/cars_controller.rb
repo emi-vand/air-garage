@@ -4,6 +4,14 @@ class CarsController < ApplicationController
 
   def index
     @cars = Car.filter(params.slice(:make, :min_price, :max_price, :location))
+    @cars = @cars.geocoded
+    @markers = @cars.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { car: car })
+      }
+    end
   end
 
   def new
