@@ -10,15 +10,17 @@ a:hover {
   display:flex;
 }
 
-.cards {
+.cars-container {
+  flex-grow: 1;
+}
+
+.cards-content {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr, 1fr;
-  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 #map {
-  height: 100vh;
   position: sticky;
   top: 80px;
 }
