@@ -1,3 +1,4 @@
+// CSS for the cards in the cars index page
 .card {
   transition: 0.5s ease-in-out;
   &:hover {
@@ -14,7 +15,7 @@
 .card-avatar {
   position: absolute;
   right: -4px;
-  top: -125px;
+  top: -120px;
 }
 
 .card-bg {
@@ -24,7 +25,7 @@
   padding-bottom: 50%;
 }
 
-// CSS for the cards in the user profile page
+// CSS for the cards in the user profile page listings and rentals
 .card-product {
   overflow: hidden;
   height: 120px;
@@ -47,7 +48,7 @@
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 0.85rem;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
