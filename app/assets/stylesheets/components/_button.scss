@@ -1,0 +1,16 @@
+.btn-medium {
+  color: #797979;
+  border: 1px solid #797979;
+  border-radius: 3px;
+  padding: 8px 32px 8px 32px;
+  opacity: 0.9;
+  margin: 16px;
+  transition: 0.5s;
+}
+
+.btn-medium:hover {
+  color: #797979;
+  border-color: #797979;
+  opacity: 1;
+  background-color: rgb(216, 216, 216)
+}

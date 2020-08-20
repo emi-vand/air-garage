@@ -6,7 +6,7 @@
 
 <p>Colour: <%= @car.color %></p>
 <p>Seats: <%= @car.seats %></p>
-<p>Price per day: £<%= @car.price %></p>
+<p>Price per day: £<%= @car.price.round %></p>
 <p>Location: <%= @car.location %></p>
 <p>Owner: <%= @car.user.first_name %> <%= @car.user.last_name %></p>
 
@@ -33,8 +33,8 @@
 <div class="col-lg-6">
 <div class="rental-form">
   <%= simple_form_for [@car, @rental] do |f| %>
-    <%= f.input :pick_up, as: :datetime, html5: true %>
-    <%= f.input :drop_off, as: :datetime, html5: true %>
+    <%= f.input :pick_up, as: :date, html5: true %>
+    <%= f.input :drop_off, as: :date, html5: true %>
     <%= f.button :submit, class: "btn btn-primary mb-4" %>
   <% end %>
 </div>

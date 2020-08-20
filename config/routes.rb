@@ -7,7 +7,14 @@ Rails.application.routes.draw do
     resources :rentals, only: [ :new, :create, :index, :show ]
   end
   
-  resources :rentals, only: [:update, :edit, :destroy]
+  resources :rentals, only: [:update, :edit, :destroy] do
+    post :approve
+  end
+  # do
+  #   users do
+  #     post :approve
+  #   end
+  # end
 
   resources :users, only: [:show]
 
