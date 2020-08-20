@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :cars do
-    resources :rentals, only: [ :new, :create, :index]
+
+    resources :rentals, only: [ :new, :create, :index, :show ]
   end
 
   resources :rentals, only: [:update, :edit, :destroy, :show] do
-    post :approve
+    patch :approve, to: "rentals#approve"
+    patch :decline, to: "rentals#decline"
   end
+  
   # do
   #   users do
   #     post :approve
@@ -17,5 +20,9 @@ Rails.application.routes.draw do
   # end
 
   resources :users, only: [:show]
+
+  resources :rentals, only: [:show] do
+    resources :reviews, only: [:new, :create]
+  end
 
 end

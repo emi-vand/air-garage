@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= simple_form_for [@rental, @review] do |f| %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your ride!" %>
+        <%= f.submit "Submit Review" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_many :rentals
   has_one_attached :photo
   validates :photo, :first_name, :last_name, presence: true
-  
 end

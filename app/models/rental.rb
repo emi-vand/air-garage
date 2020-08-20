@@ -3,6 +3,9 @@ class Rental < ApplicationRecord
   belongs_to :car
 
   validates :pick_up, :drop_off, presence: true
+
+  has_one :review
+
   validate :check_time_equality
 
   def check_time_equality
@@ -10,5 +13,4 @@ class Rental < ApplicationRecord
       errors.add(:drop_off, "must be after the start date")
     end
   end
-
 end
