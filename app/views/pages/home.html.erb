@@ -2,11 +2,26 @@
   <div class="container-home-content">
   <h1> Welcome to Air Garage </h1>
 
-  <%= form_tag root_path, class: "search-bar", method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
+  <%= form_tag cars_path, class: "search-bar", method: :get do %>
+      <%= text_field_tag :make,
+      params[:make],
       class: "search-input",
-      placeholder: "Find a car" %>
+      placeholder: "Make" %>
+
+       <%= text_field_tag :min_price,
+      params[:min_price],
+      class: "search-input",
+      placeholder: "Min Price" %>
+
+       <%= text_field_tag :max_price,
+      params[:max_price],
+      class: "search-input",
+      placeholder: "Max Price" %>
+
+       <%= text_field_tag :location,
+      params[:location],
+      class: "search-input",
+      placeholder: "Location" %>
       <%= button_tag( :class => "btn search-btn") do%>
         <i class="fa fa-search"> </i>
       <% end %>

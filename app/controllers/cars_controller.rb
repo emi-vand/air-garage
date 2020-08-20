@@ -3,7 +3,7 @@ class CarsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @cars = Car.all
+    @cars = Car.filter(params.slice(:make, :min_price, :max_price, :location))
   end
 
   def new
