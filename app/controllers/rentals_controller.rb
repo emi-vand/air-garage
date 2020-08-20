@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:show, :edit, :destroy, :update]
+  before_action :set_rental, only: [:show, :edit, :destroy, :update, :approve]
 
   def index
     @rentals = Rental.all
@@ -19,11 +19,21 @@ class RentalsController < ApplicationController
     @car = Car.find(params[:car_id])
     @rental.car = @car
     @rental.user = @user
+    @rental.calculated_price = @car.price * (@rental.drop_off-@rental.pick_up)
     if @rental.save
       redirect_to user_path(current_user)
     else
-      render :new
+      render "cars/show"
     end
+  end
+
+  def approve
+     @rental.update(status: "approved")
+     if @rental.state == "approved"
+       redirect_to user_path(current_user)
+     else
+       redirect_to user_path(current_user)
+     end
   end
 
   # def edit
