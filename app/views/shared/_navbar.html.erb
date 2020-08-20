@@ -8,16 +8,31 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
   <!-- Search form -->
-    <%= form_tag root_path, class: "navbar-wagon-search rounded", method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
+ <%= form_tag cars_path, class: "navbar-wagon-search rounded", method: :get do %>
+      <%= text_field_tag :make,
+      params[:make],
       class: "navbar-wagon-search-input",
-      placeholder: "Find a car" %>
+      placeholder: "Make" %>
+
+        <%= text_field_tag :min_price,
+      params[:min_price],
+      class: "navbar-wagon-search-input",
+      placeholder: "Min Price" %>
+
+       <%= text_field_tag :max_price,
+      params[:max_price],
+      class: "navbar-wagon-search-input",
+      placeholder: "Max Price" %>
+
+       <%= text_field_tag :location,
+      params[:location],
+      class: "navbar-wagon-search-input",
+      placeholder: "Location" %>
+
       <%= button_tag( :class => "btn navbar-wagon-search-btn") do%>
         <i class="fa fa-search"> </i>
       <% end %>
-    <% end %>
-
+  <% end %>
     <!-- Notification -->
 
 
