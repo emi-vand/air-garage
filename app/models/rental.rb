@@ -3,6 +3,9 @@ class Rental < ApplicationRecord
   belongs_to :car
 
   validates :pick_up, :drop_off, presence: true
+
+  has_one :review
+
   validate :check_time_equality
 
   def check_time_equality

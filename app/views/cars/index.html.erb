@@ -14,6 +14,23 @@
                 <div class="card-bg rounded" style="background-image: url(<%= cl_image_path car.photos.first.key%>)"></div>
               <% end %>
               <div class="card-body">
+                  <% if car.average_rating <= 1  %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "1star.png", alt: "alttext" %>
+                  <% elsif car.average_rating <= 2 %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "2star.png", alt: "alttext" %>
+                  <% elsif car.average_rating <= 3 %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "3star.png", alt: "alttext" %>
+                  <% elsif car.average_rating <= 4 %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "4star.png", alt: "alttext" %>
+                  <% else %>
+                    <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
+                    <%= image_tag "5star.png", alt: "alttext" %>
+                <% end %>
+                <p> </p>
                 <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
                 <p class="card-text"> <%= car.location %> </p>
                   <div class="card-bottom-section">
