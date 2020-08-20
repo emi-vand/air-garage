@@ -45,7 +45,7 @@
           <% end %>
               <% end %>
               <div class="card-product-infos">
-                <h2> <%= rental.car.make %> | <%= rental.car.model %> </h2>
+                <h2> <%= rental.car.make %> | <%= rental.car.model %> <%= link_to "Review", new_rental_review_path(rental), class: "btn btn-primary" %></h2>
                 <p> Pick-up: <%= rental.pick_up.to_formatted_s(:rfc822) %> </p>
                 <p> Drop-off: <%= rental.drop_off.to_formatted_s(:rfc822)  %> </p>
                 <p> Total Price: £ <%= rental.calculated_price %></p>
