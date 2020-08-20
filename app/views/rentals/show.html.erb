@@ -1,0 +1,10 @@
+<div class="confirmation-container">
+<h1>Thank you for booking<strong> <%= @rental.car.make %> <%= @rental.car.model %></strong></h1>
+
+<p>You will receive an order confirmation shortly</p>
+<p> Total Price: £ <%= @rental.calculated_price %></p>
+<div class="confirmation-btn">
+ <%= link_to "Rent another car", cars_path, class: "btn btn-primary" %>
+ <%= link_to "Go to my profile", user_path(current_user), class: "btn btn-primary" %>
+</div>
+</div>

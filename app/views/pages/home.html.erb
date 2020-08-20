@@ -2,10 +2,11 @@
   <div class="container-home-content">
   <h1> Welcome to Air Garage </h1>
 
-  <%= form_tag cars_path, class: "search-bar", method: :get do %>
+<div class="search-bar-home">
+  <%= form_tag cars_path, class: "search-bar rounded", method: :get do %>
     <%= text_field_tag :make,
     params[:make],
-    class: "search-input",
+    class: "search-input rounded-left",
     placeholder: "Make" %>
 
     <%= text_field_tag :min_price,
@@ -20,7 +21,7 @@
 
     <%= text_field_tag :location,
     params[:location],
-    class: "search-input",
+    class: "search-input rounded-right",
     placeholder: "Location" %>
 
     <%= button_tag( :class => "btn navbar-wagon-search-btn") do%>
@@ -31,6 +32,7 @@
   <div class="text-center">
     <%= link_to "View all cars", cars_path, class: "btn btn-medium" %>
   </div>
-  
+</div>
+
 </div>
 </div>

@@ -27,6 +27,9 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+
+import rentalPriceCalculator from "../custom_functions/rental_price_calculator";
+
 import { initMapbox } from '../plugins/init_mapbox';
 
 // app/javascript/packs/application.js
@@ -37,4 +40,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initStarRating();
   initMapbox();
+ 
+rentalPriceCalculator();
 });
+

@@ -11,7 +11,7 @@
  <%= form_tag cars_path, class: "navbar-wagon-search rounded", method: :get do %>
       <%= text_field_tag :make,
       params[:make],
-      class: "navbar-wagon-search-input",
+      class: "navbar-wagon-search-input nav-rounded-left",
       placeholder: "Make" %>
 
         <%= text_field_tag :min_price,
@@ -26,7 +26,7 @@
 
        <%= text_field_tag :location,
       params[:location],
-      class: "navbar-wagon-search-input",
+      class: "navbar-wagon-search-input nav-rounded-right",
       placeholder: "Location" %>
 
       <%= button_tag( :class => "btn navbar-wagon-search-btn") do%>
@@ -39,7 +39,7 @@
 
     <!-- Button (call-to-action) -->
     <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to sign out?"} , class: "btn-sign-in rounded" %>
+      <%= link_to "View Cars", cars_path, class: "btn-sign-in rounded" %>
       <!-- Dropdown list -->
       <div class="dropdown">
       <% if current_user.photo.attached? %>
@@ -49,23 +49,14 @@
       <% end %>
         <!-- <i class="dropdown-toggle" data-toggle="dropdown"></i> -->
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu rounded">
-          <li><%= link_to "List new car", new_car_path %></li>
-          <li><%= link_to "View cars", cars_path %></li>
           <li><%= link_to 'Profile', user_path(current_user) %></li>
+          <li><%= link_to "List new car", new_car_path %></li>
           <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to sign out?"} %></li>
         </ul>
       </div>
 
     <% else %>
       <%= link_to "Sign In", user_session_path, class: "btn-sign-in rounded" %>
-      <div class="dropdown">
-        <i class="dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu rounded">
-          <li><%= link_to "List new car", new_car_path %></li>
-          <li><%= link_to "View cars", cars_path %></li>
-          <li><%= link_to 'Profile', user_session_path %></li>
-        </ul>
-      </div>
     <% end %>
 
   </div>
