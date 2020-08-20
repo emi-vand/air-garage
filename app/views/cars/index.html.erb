@@ -3,20 +3,24 @@
   <h4 class="text-center">Find your favourite car to rent</h4>
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
-    <div class="col-4 my-3">
-      <div class="card rounded" style="width: 18rem;">
-        <% if car.photos.attached? %>
-          <div class="card-bg rounded" style="background-image: url(<%= cl_image_path car.photos.first.key%>)"></div>
-        <% end %>
+      <div class="col-4 my-3">
+        <div class="card rounded" style="width: 18rem;">
+          <% if car.photos.attached? %>
+            <div class="card-bg rounded" style="background-image: url(<%= cl_image_path car.photos.first.key%>)"></div>
+          <% end %>
         <div class="card-body">
           <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
           <p class="card-text"> <%= car.location %> </p>
-          <div>
-          <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
-        </div>
-        </div>
+            <div class="card-bottom-section">
+              <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>
+              <p> <%= car.price %> £ per day </p>
+              <% if car.user.photo.attached? %>
+              <%= cl_image_tag car.user.photo.key, class: "avatar-large card-avatar" %>
+              <% end %>
+            </div>
         </div>
       </div>
-    <% end %>
     </div>
-  </div>
+  <% end %>
+</div>
+</div>

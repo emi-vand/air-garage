@@ -9,52 +9,61 @@
       <div class="user-photo"><%= cl_image_tag card_image, class: 'avatar-profile'%></div>
     </div>
 
-    <div class="col-md-9 p-3 info-section">
-      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <div class="col-md-9 p-4 info-section">
+      <h3><%= @user.first_name %> <%= @user.last_name %></h3>
       <div class="profile-block contact-info">
-        <h4> <%= @user.email %> </h4>
+        <h6> <%= @user.email %> </h6>
       </div>
     </div>
   </div>
 
-    <div class="row justify-content-between text-center">
-      <div class="col-lg-5 p-3">
-        <h4> Rental </h4>
-          <% @user.rentals.each do |rental| %>
-            <details>
-              <summary> <%= rental.car.make %> / <%= rental.car.model %> </summary>
-              <div class="container bg-light">
-                <div class="row">
-                <div class="col-6">
-               <% if rental.car.photos.attached? %>
-                <%= link_to car_path(rental.car) do  %>
-                  <%= cl_image_tag rental.car.photos.first.key, class: "card-img-top" %>
-                <% end %>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="rentals-tab" data-toggle="tab" href="#rentals" role="tab" aria-controls="rentals" aria-selected="true">Rentals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="listing-tab" data-toggle="tab" href="#listing" role="tab" aria-controls="listing" aria-selected="false">Listing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="Pending-tab" data-toggle="tab" href="#Pending" role="tab" aria-controls="Pending" aria-selected="false">Pending</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="rentals" role="tabpanel" aria-labelledby="rentals-tab">
+        <% @user.rentals.each do |rental| %>
+          <%= link_to car_path(rental.car) do  %>
+            <div class="card-product">
+              <% if rental.car.photos.attached? %>
+                  <%= cl_image_tag rental.car.photos.first.key, class: "card-product-image" %>
               <% end %>
-              </div>
-              <div class="col-6 date-content">
-              <p> Pick-up: <%= rental.pick_up %> </p>
-              <p> Drop-off: <%= rental.drop_off %> </p>
+              <div class="card-product-infos">
+                <h2> <%= rental.car.make %> / <%= rental.car.model %> </h2>
+                <p> Pick-up: <%= rental.pick_up %> </p>
+                <p> Drop-off: <%= rental.drop_off %> </p>
               </div>
             </div>
-            </div>
-            </details>
+          <% end %>
         <% end %>
       </div>
 
-      <div class="col-lg-5 p-3">
-        <h4> Listing </h4>
-          <% @user.cars.each do |car| %>
-
-          <details>
-           <summary> <%= car.make %> <%= car.model %> </summary>
+      <div class="tab-pane fade" id="listing" role="tabpanel" aria-labelledby="listing-tab">
+        <% @user.cars.each do |car| %>
+          <div class="card-product">
             <% if car.photos.attached? %>
-            <%= link_to car_path(car) do  %>
-              <%= cl_image_tag car.photos.first.key, class: "card-img-top" %>
+              <%= link_to car_path(car) do  %>
+                <%= cl_image_tag car.photos.first.key, class: "card-product-image" %>
+              <% end %>
             <% end %>
-            <% end %>
-          </details>
+            <div class="card-product-infos">
+              <%= car.make %> <%= car.model %>
+            </div>
+          </div>
         <% end %>
       </div>
+
+      <div class="tab-pane fade" id="Pending" role="tabpanel" aria-labelledby="Pending-tab">...</div>
     </div>
   </div>
+
+
