@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :rentals, only: [:update, :edit, :destroy, :show] do
     patch :approve, to: "rentals#approve"
     patch :decline, to: "rentals#decline"
+    resources :reviews, only: [:new, :create]
   end
   
   # do
@@ -21,8 +22,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :rentals, only: [:show] do
-    resources :reviews, only: [:new, :create]
-  end
+  # resources :rentals, only: [:show] do
+      # resources :reviews, only: [:new, :create]
+  # end
 
 end

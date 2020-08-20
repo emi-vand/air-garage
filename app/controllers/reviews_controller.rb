@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   def new
     @review = Review.new
     @rental = Rental.find(params[:rental_id])
