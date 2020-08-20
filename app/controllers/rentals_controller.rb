@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:show, :edit, :destroy, :update, :approve]
+  before_action :set_rental, only: [:show, :edit, :destroy, :update, :approve, :decline]
 
   def index
     @rentals = Rental.all
@@ -28,12 +28,13 @@ class RentalsController < ApplicationController
   end
 
   def approve
-     @rental.update(status: "approved")
-     if @rental.state == "approved"
-       redirect_to user_path(current_user)
-     else
-       redirect_to user_path(current_user)
-     end
+     @rental.update(status: "Approved")
+     redirect_to user_path(current_user)
+  end
+
+  def decline
+    @rental.update(status: "Declined")
+    redirect_to user_path(current_user)
   end
 
   # def edit
@@ -52,11 +53,11 @@ class RentalsController < ApplicationController
   private
 
   def set_rental
-    @rental = Rental.find(params[:id])
+    @rental = Rental.find(params[:rental_id])
   end
 
   def rental_params
-    params.require(:rental).permit(:car_id, :user_id, :pick_up, :drop_off)
+    params.require(:rental).permit(:car_id, :user_id, :pick_up, :drop_off, :status)
   end
 
 end

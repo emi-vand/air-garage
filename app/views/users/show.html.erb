@@ -13,14 +13,13 @@
       <h3><%= @user.first_name %> <%= @user.last_name %></h3>
       <div class="profile-block contact-info">
         <h6> <%= @user.email %> </h6>
-        <%# <%= link_to 'Approve', Rental.approve(id: rental.id), class: "button-xs success" %> %>
       </div>
     </div>
   </div>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="rentals-tab" data-toggle="tab" href="#rentals" role="tab" aria-controls="rentals" aria-selected="true">Rentals</a>
+        <a class="nav-link active" id="rentals-tab" data-toggle="tab" href="#rentals" role="tab" aria-controls="rentals" aria-selected="false">Rentals</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="listing-tab" data-toggle="tab" href="#listing" role="tab" aria-controls="listing" aria-selected="false">Listing</a>
@@ -28,15 +27,22 @@
       <li class="nav-item">
         <a class="nav-link" id="Pending-tab" data-toggle="tab" href="#Pending" role="tab" aria-controls="Pending" aria-selected="false">Pending</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="Approved-tab" data-toggle="tab" href="#Approved" role="tab" aria-controls="Approved" aria-selected="false">Approved</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="Declined-tab" data-toggle="tab" href="#Declined" role="tab" aria-controls="Declined" aria-selected="false">Declined</a>
+      </li>
     </ul>
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="rentals" role="tabpanel" aria-labelledby="rentals-tab">
         <% @user.rentals.each do |rental| %>
-          <%= link_to car_path(rental.car) do  %>
             <div class="card-product">
               <% if rental.car.photos.attached? %>
+          <%= link_to car_path(rental.car) do  %>
                   <%= cl_image_tag rental.car.photos.first.key, class: "card-product-image" %>
+          <% end %>
               <% end %>
               <div class="card-product-infos">
                 <h2> <%= rental.car.make %> | <%= rental.car.model %> </h2>
@@ -44,8 +50,21 @@
                 <p> Drop-off: <%= rental.drop_off.to_formatted_s(:rfc822)  %> </p>
                 <p> Total Price: £ <%= rental.calculated_price %></p>
               </div>
+                <div class="rental-status">
+                  <p> Status: 
+                    <% if rental.status == "Approved" %> 
+                    Approved
+                      <i class="fas fa-check-circle"></i>
+                    <% elsif rental.status == "Declined" %>
+                    Declined
+                      <i class="fas fa-times-circle"></i>
+                    <% else %>
+                    Pending
+                      <i class="fas fa-pause-circle"></i>                    
+                    <% end %>                                     
+                  </p>
+                </div>
             </div>
-          <% end %>
         <% end %>
       </div>
 
@@ -58,13 +77,80 @@
               <% end %>
             <% end %>
             <div class="card-product-infos">
-              <%= car.make %> <%= car.model %>
+              <h2> <%= car.make %> | <%= car.model %> </h2>
+              <p> Price: <%= car.price %> </p>
             </div>
           </div>
         <% end %>
       </div>
 
-      <div class="tab-pane fade" id="Pending" role="tabpanel" aria-labelledby="Pending-tab">...</div>
+      <div class="tab-pane fade" id="Pending" role="tabpanel" aria-labelledby="Pending-tab">
+        <% @user.cars.each do |car| %>
+          <% car.rentals.each do |rental| %>
+            <% if rental.status == "Pending" %>
+              <div class="card-product">
+                <% if rental.car.photos.attached? %>
+                  <%= cl_image_tag car.photos.first.key, class: "card-product-image" %>
+                <% end %>
+                <div class="card-product-infos">
+                  <%= car.make %> <%= car.model %>
+                  <%= rental.pick_up %> - <%= rental.drop_off %> for 
+                  <%= link_to user_path(rental.user) do  %>
+                    <%= rental.user.first_name %> <%= rental.user.last_name %>                  
+                  <% end %>                  
+                </div>
+                <div class="user-buttons">
+                  <%= link_to 'Approve', rental_approve_path(rental), class: "btn btn-approve", method: :patch %>
+                  <%= link_to 'Decline', rental_decline_path(rental), class: "btn btn-deny", method: :patch %>
+                </div>
+              </div>            
+            <% end %>          
+          <% end %>    
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="Approved" role="tabpanel" aria-labelledby="Approved-tab">
+        <% @user.cars.each do |car| %>
+          <% car.rentals.each do |rental| %>
+            <% if rental.status == "Approved" %>
+              <div class="card-product">
+                <% if rental.car.photos.attached? %>
+                  <%= cl_image_tag car.photos.first.key, class: "card-product-image" %>
+                <% end %>
+                <div class="card-product-infos">
+                  <%= car.make %> <%= car.model %>
+                  <%= rental.pick_up %> - <%= rental.drop_off %> for 
+                  <%= link_to user_path(rental.user) do  %>
+                    <%= rental.user.first_name %> <%= rental.user.last_name %>                  
+                  <% end %>                  
+                </div> 
+              </div>           
+            <% end %>          
+          <% end %>    
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="Declined" role="tabpanel" aria-labelledby="Declined-tab">
+        <% @user.cars.each do |car| %>
+          <% car.rentals.each do |rental| %>
+            <% if rental.status == "Declined" %>
+              <div class="card-product">
+                <% if rental.car.photos.attached? %>
+                  <%= cl_image_tag car.photos.first.key, class: "card-product-image" %>
+                <% end %>
+                <div class="card-product-infos">
+                  <%= car.make %> <%= car.model %>
+                  <%= rental.pick_up %> - <%= rental.drop_off %> for 
+                  <%= link_to user_path(rental.user) do  %>
+                    <%= rental.user.first_name %> <%= rental.user.last_name %>                  
+                  <% end %>                  
+                </div>
+              </div>
+            <% end %>          
+          <% end %>    
+        <% end %>
+      </div>
+
     </div>
   </div>
 

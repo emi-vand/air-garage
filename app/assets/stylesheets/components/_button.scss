@@ -14,3 +14,37 @@
   opacity: 1;
   background-color: rgb(216, 216, 216)
 }
+
+.btn-approve {
+  color: #797979;
+  border: 1px solid #797979;
+  border-radius: 3px;
+  padding: 8px 32px 8px 32px;
+  opacity: 0.8;
+  margin: 8px;
+  transition: 0.6s;
+  width: 150px;
+}
+
+.btn-approve:hover {
+  color: white;
+  opacity: 1;
+  background-color: #3e9b43;
+}
+
+.btn-deny {
+  color: #797979;
+  border: 1px solid #797979;
+  border-radius: 3px;
+  padding: 8px 32px 8px 32px;
+  opacity: 0.8;
+  margin: 8px;
+  transition: 0.6s;
+  width: 150px;
+}
+
+.btn-deny:hover {
+  color: white;
+  background-color: #d12424;
+  opacity: 1;
+}
