@@ -6,7 +6,19 @@ a:hover {
   text-decoration: none;
 }
 
-.map-sticky {
+.index-container{
+  display:flex;
+}
+
+.cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  grid-gap: 16px;
+}
+
+#map {
+  height: 100vh;
   position: sticky;
   top: 80px;
 }
