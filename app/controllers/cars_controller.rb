@@ -3,8 +3,8 @@ class CarsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-
-    @cars = Car.geocoded
+    @cars = Car.filter(params.slice(:make, :min_price, :max_price, :location))
+    @cars = @cars.geocoded
     @markers = @cars.map do |car|
       {
         lat: car.latitude,
@@ -12,9 +12,6 @@ class CarsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { car: car })
       }
     end
-    
-    @cars = @cars.filter(params.slice(:make, :min_price, :max_price, :location))
-
   end
 
   def new
