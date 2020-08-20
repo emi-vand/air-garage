@@ -38,7 +38,7 @@
                   <%= cl_image_tag rental.car.photos.first.key, class: "card-product-image" %>
               <% end %>
               <div class="card-product-infos">
-                <h2> <%= rental.car.make %> / <%= rental.car.model %> </h2>
+                <h2> <%= rental.car.make %> | <%= rental.car.model %> </h2>
                 <p> Pick-up: <%= rental.pick_up %> </p>
                 <p> Drop-off: <%= rental.drop_off %> </p>
               </div>
