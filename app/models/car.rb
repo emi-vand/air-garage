@@ -1,8 +1,10 @@
 class Car < ApplicationRecord
   include Filterable
   belongs_to :user
-  has_many :rentals
+
+  has_many :rentals, dependent: :destroy
   has_many :reviews, through: :rentals
+
   has_many_attached :photos
   validates :make, :model, :seats, :price, :location, presence: true
 
@@ -12,8 +14,8 @@ class Car < ApplicationRecord
     review_count = self.reviews.length
     self.reviews.each do |review|
       review_sum += review.rating
-    end
-    (review_sum / review_count)
+     end
+      return (review_sum / review_count)
   end
 
   geocoded_by :location

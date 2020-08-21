@@ -4,7 +4,7 @@ class Rental < ApplicationRecord
 
   validates :pick_up, :drop_off, presence: true
 
-  has_one :review
+  has_one :review, dependent: :destroy
 
   validate :check_time_equality
 

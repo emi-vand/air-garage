@@ -66,8 +66,11 @@
   background: transparent;
   position: absolute;
   right: 14px;
-  top: -4px;
+  top: -5px;
   z-index: 1;
+  &:hover {
+    color: rgb(79, 150, 250);
+  }
 }
 .navbar-wagon-search-input {
   flex: 0 1 300px;
@@ -76,12 +79,15 @@
   width: 120px;
   font-weight: lighter;
   color: #666666;
-  border: 1px solid #E6E6E6;
+  border: none;
+  background-color: rgb(255, 255, 255);
   padding: 0 10px;
   font-size: 14px;
   outline: none;
   &:focus {
-    border: 1px solid #CCCCCC;
+    &::placeholder {
+      color: rgb(79, 150, 250);
+    }
   }
 }
 
