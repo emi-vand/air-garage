@@ -64,7 +64,7 @@
 <% end %>
 </div>
 
-</div>
+
 
 <script type="text/javascript">
   const rentalPriceCalculator = () => {
@@ -81,7 +81,7 @@
       const result = ((new Date(rentalDropOffValue) - new Date(rentalPickUp.value)) / 1000 / 60 / 60 / 24);
       const newPrice = result * price;
       if (newPrice < 0) {
-        rentalPrice.innerHTML = "Pick up must be after drop off !"
+        rentalPrice.innerHTML = "Drop off must be after pick up !"
       } else {
         rentalPrice.innerHTML = `Total Price £${newPrice}`;
       }
@@ -103,3 +103,4 @@ rentalPriceCalculator();
 
 </script>
 
+</div>
