@@ -45,14 +45,14 @@
           <% end %>
               <% end %>
               <div class="card-product-infos">
-                <h2> <%= rental.car.make %> | <%= rental.car.model %> <%= link_to "Review", new_rental_review_path(rental), class: "btn btn-primary" %></h2>
+                <h2> <%= rental.car.make %> | <%= rental.car.model %> <%= link_to "Review", new_rental_review_path(rental) %></h2>
                 <p> Pick-up: <%= rental.pick_up.to_formatted_s(:rfc822) %> </p>
                 <p> Drop-off: <%= rental.drop_off.to_formatted_s(:rfc822)  %> </p>
-                <p> Total Price: £ <%= rental.calculated_price %></p>
+                <p> Total Price: £<%= rental.calculated_price %></p>
               </div>
                 <div class="rental-status">
-                  <p> Status: 
-                    <% if rental.status == "Approved" %> 
+                  <p> Status:
+                    <% if rental.status == "Approved" %>
                     Approved
                       <i class="fas fa-check-circle"></i>
                     <% elsif rental.status == "Declined" %>
@@ -60,8 +60,8 @@
                       <i class="fas fa-times-circle"></i>
                     <% else %>
                     Pending
-                      <i class="fas fa-pause-circle"></i>                    
-                    <% end %>                                     
+                      <i class="fas fa-pause-circle"></i>
+                    <% end %>
                   </p>
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <% end %>
             <div class="card-product-infos">
               <h2> <%= car.make %> | <%= car.model %> </h2>
-              <p> Price: <%= car.price %> </p>
+              <p> Price: <%= £ car.price.round %> </p>
             </div>
           </div>
         <% end %>
@@ -94,18 +94,18 @@
                 <% end %>
                 <div class="card-product-infos">
                   <%= car.make %> <%= car.model %>
-                  <%= rental.pick_up %> - <%= rental.drop_off %> for 
+                  <%= rental.pick_up %> - <%= rental.drop_off %> for
                   <%= link_to user_path(rental.user) do  %>
-                    <%= rental.user.first_name %> <%= rental.user.last_name %>                  
-                  <% end %>                  
+                    <%= rental.user.first_name %> <%= rental.user.last_name %>
+                  <% end %>
                 </div>
                 <div class="user-buttons">
                   <%= link_to 'Approve', rental_approve_path(rental), class: "btn btn-approve", method: :patch, remote: true %>
                   <%= link_to 'Decline', rental_decline_path(rental), class: "btn btn-deny", method: :patch, remote: true %>
                 </div>
-              </div>            
-            <% end %>          
-          <% end %>    
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
 
@@ -119,14 +119,14 @@
                 <% end %>
                 <div class="card-product-infos">
                   <%= car.make %> <%= car.model %>
-                  <%= rental.pick_up %> - <%= rental.drop_off %> for 
+                  <%= rental.pick_up %> - <%= rental.drop_off %> for
                   <%= link_to user_path(rental.user) do  %>
-                    <%= rental.user.first_name %> <%= rental.user.last_name %>                  
-                  <% end %>                  
-                </div> 
-              </div>           
-            <% end %>          
-          <% end %>    
+                    <%= rental.user.first_name %> <%= rental.user.last_name %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
 
@@ -140,14 +140,14 @@
                 <% end %>
                 <div class="card-product-infos">
                   <%= car.make %> <%= car.model %>
-                  <%= rental.pick_up %> - <%= rental.drop_off %> for 
+                  <%= rental.pick_up %> - <%= rental.drop_off %> for
                   <%= link_to user_path(rental.user) do  %>
-                    <%= rental.user.first_name %> <%= rental.user.last_name %>                  
-                  <% end %>                  
+                    <%= rental.user.first_name %> <%= rental.user.last_name %>
+                  <% end %>
                 </div>
               </div>
-            <% end %>          
-          <% end %>    
+            <% end %>
+          <% end %>
         <% end %>
       </div>
 
