@@ -2,7 +2,7 @@
 .card {
   transition: 0.5s ease-in-out;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
   }
 }
 .card-bottom-section {
@@ -28,7 +28,7 @@
 // CSS for the cards in the user profile page listings and rentals
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 140px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -68,4 +68,11 @@
 
 .rental-status p {
   font-size: 16px;
+}
+
+.user-buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 40px;
 }

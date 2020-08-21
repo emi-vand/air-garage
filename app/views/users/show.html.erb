@@ -19,19 +19,19 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="rentals-tab" data-toggle="tab" href="#rentals" role="tab" aria-controls="rentals" aria-selected="false">Rentals</a>
+        <a class="nav-link active" id="rentals-tab" data-toggle="tab" href="#rentals" role="tab" aria-controls="rentals" aria-selected="false">Your Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="listing-tab" data-toggle="tab" href="#listing" role="tab" aria-controls="listing" aria-selected="false">Listing</a>
+        <a class="nav-link" id="listing-tab" data-toggle="tab" href="#listing" role="tab" aria-controls="listing" aria-selected="false">Your Cars</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="Pending-tab" data-toggle="tab" href="#Pending" role="tab" aria-controls="Pending" aria-selected="false">Pending</a>
+        <a class="nav-link" id="Pending-tab" data-toggle="tab" href="#Pending" role="tab" aria-controls="Pending" aria-selected="false">Pending Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="Approved-tab" data-toggle="tab" href="#Approved" role="tab" aria-controls="Approved" aria-selected="false">Approved</a>
+        <a class="nav-link" id="Approved-tab" data-toggle="tab" href="#Approved" role="tab" aria-controls="Approved" aria-selected="false">Approved Rentals</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="Declined-tab" data-toggle="tab" href="#Declined" role="tab" aria-controls="Declined" aria-selected="false">Declined</a>
+        <a class="nav-link" id="Declined-tab" data-toggle="tab" href="#Declined" role="tab" aria-controls="Declined" aria-selected="false">Declined Rentals</a>
       </li>
     </ul>
 
@@ -45,7 +45,7 @@
           <% end %>
               <% end %>
               <div class="card-product-infos">
-                <h2> <%= rental.car.make %> | <%= rental.car.model %> <%= link_to "Review", new_rental_review_path(rental) %></h2>
+                <h2> <%= rental.car.make %> | <%= rental.car.model %> - <%= link_to "Review", new_rental_review_path(rental) %></h2>
                 <p> Pick-up: <%= rental.pick_up.to_formatted_s(:rfc822) %> </p>
                 <p> Drop-off: <%= rental.drop_off.to_formatted_s(:rfc822)  %> </p>
                 <p> Total Price: £<%= rental.calculated_price %></p>
@@ -93,10 +93,12 @@
                   <%= cl_image_tag car.photos.first.key, class: "card-product-image" %>
                 <% end %>
                 <div class="card-product-infos">
-                  <%= car.make %> <%= car.model %>
-                  <%= rental.pick_up %> - <%= rental.drop_off %> for
-                  <%= link_to user_path(rental.user) do  %>
-                    <%= rental.user.first_name %> <%= rental.user.last_name %>
+                  <h2> <%= car.make %> | <%= car.model %> </h2>
+                  <p>Pick up:  <%= rental.pick_up.to_formatted_s(:rfc822) %></p>
+                  <p>Drop off:  <%= rental.drop_off.to_formatted_s(:rfc822) %></p>
+                  <p><%= cl_image_tag rental.user.photo.key, class: "avatar" %>
+                    <%= link_to user_path(rental.user) do  %>
+                    <%= rental.user.first_name %> <%= rental.user.last_name %> </p>
                   <% end %>
                 </div>
                 <div class="user-buttons">
@@ -118,10 +120,12 @@
                   <%= cl_image_tag car.photos.first.key, class: "card-product-image" %>
                 <% end %>
                 <div class="card-product-infos">
-                  <%= car.make %> <%= car.model %>
-                  <%= rental.pick_up %> - <%= rental.drop_off %> for
-                  <%= link_to user_path(rental.user) do  %>
-                    <%= rental.user.first_name %> <%= rental.user.last_name %>
+                  <h2> <%= car.make %> | <%= car.model %> </h2>
+                  <p>Pick up:  <%= rental.pick_up.to_formatted_s(:rfc822) %></p>
+                  <p>Drop off:  <%= rental.drop_off.to_formatted_s(:rfc822) %></p>
+                  <p><%= cl_image_tag rental.user.photo.key, class: "avatar" %>
+                    <%= link_to user_path(rental.user) do  %>
+                    <%= rental.user.first_name %> <%= rental.user.last_name %> </p>
                   <% end %>
                 </div>
               </div>
@@ -139,10 +143,12 @@
                   <%= cl_image_tag car.photos.first.key, class: "card-product-image" %>
                 <% end %>
                 <div class="card-product-infos">
-                  <%= car.make %> <%= car.model %>
-                  <%= rental.pick_up %> - <%= rental.drop_off %> for
-                  <%= link_to user_path(rental.user) do  %>
-                    <%= rental.user.first_name %> <%= rental.user.last_name %>
+                  <h2> <%= car.make %> | <%= car.model %> </h2>
+                  <p>Pick up:  <%= rental.pick_up.to_formatted_s(:rfc822) %></p>
+                  <p>Drop off:  <%= rental.drop_off.to_formatted_s(:rfc822) %></p>
+                  <p><%= cl_image_tag rental.user.photo.key, class: "avatar" %>
+                    <%= link_to user_path(rental.user) do  %>
+                    <%= rental.user.first_name %> <%= rental.user.last_name %> </p>
                   <% end %>
                 </div>
               </div>
