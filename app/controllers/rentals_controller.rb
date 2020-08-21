@@ -30,12 +30,12 @@ class RentalsController < ApplicationController
 
   def approve
      @rental.update(status: "Approved")
-     redirect_to user_path(current_user)
+     redirect_to user_path(current_user, anchor: "Pending")
   end
 
   def decline
     @rental.update(status: "Declined")
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user, anchor: "Pending")
   end
 
   # def edit

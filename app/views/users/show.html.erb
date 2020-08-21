@@ -100,8 +100,8 @@
                   <% end %>                  
                 </div>
                 <div class="user-buttons">
-                  <%= link_to 'Approve', rental_approve_path(rental), class: "btn btn-approve", method: :patch %>
-                  <%= link_to 'Decline', rental_decline_path(rental), class: "btn btn-deny", method: :patch %>
+                  <%= link_to 'Approve', rental_approve_path(rental), class: "btn btn-approve", method: :patch, remote: true %>
+                  <%= link_to 'Decline', rental_decline_path(rental), class: "btn btn-deny", method: :patch, remote: true %>
                 </div>
               </div>            
             <% end %>          
