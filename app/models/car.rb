@@ -1,7 +1,7 @@
 class Car < ApplicationRecord
   include Filterable
   belongs_to :user
-  has_many :rentals
+  has_many :rentals, dependent: :destroy
   has_many_attached :photos
   validates :make, :model, :seats, :price, :location, presence: true
 
@@ -10,7 +10,7 @@ class Car < ApplicationRecord
     review_count = 0
     if self.rentals.count == 0
       return 0
-      else
+    else
       self.rentals.each do |rental|
         review_sum = review_sum + rental.review.rating
         review_count += 1
