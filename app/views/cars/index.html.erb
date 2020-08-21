@@ -33,9 +33,7 @@
                     <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
                     <%= image_tag "5star.png", alt: "alttext" %>
                 <% end %>
-                
                 <p> </p>
-                <h5 class="card-title"> <%= car.make %> <%= car.model %> </h5>
                 <p class="card-text"> <%= car.location %> </p>
                   <div class="card-bottom-section">
                     <%= link_to 'See more', car_path(car), class: "btn btn-primary" %>

@@ -58,6 +58,10 @@
   justify-content: flex-end;
   padding: 0 10px;
   position: relative;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+  }
 }
 .navbar-wagon-search-btn {
   line-height: 40px;
