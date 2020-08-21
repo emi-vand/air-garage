@@ -1,9 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4">
+<div class="container w-50 mt-5 justify-content-center">
+  <div class="row p-5 bg-light shadow">
+    <div class="col-6">
+      <h3> Review <%= @rental.car.make %> <%= @rental.car.model %></h3>
+      <p> </p>
+      <p> Car owner: <%= @rental.car.user.first_name %> <%= @rental.car.user.last_name %> </p>
+      <p> Pick-up: <%= @rental.pick_up %> </p>
+      <p> Drop-off: <%= @rental.drop_off %> </p>
+    </div>
+    <div class="col-6">
+      <br>
       <%= simple_form_for [@rental, @review] do |f| %>
         <%= f.input :rating, collection: (1..5).to_a, label: "Rate your ride!" %>
-        <%= f.submit "Submit Review" %>
+        <%= f.submit "Submit", class: "btn btn-info"%>
       <% end %>
     </div>
   </div>

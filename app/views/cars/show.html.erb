@@ -24,11 +24,16 @@
            <%= @car.user.first_name %> <%= @car.user.last_name %> <%= cl_image_tag @car.user.photo.key, class: "avatar" %>
             <% end %>
           </p>
-
+        <div class="row">
+        <div class="col">
         <p>Colour: <%= @car.color %></p>
         <p>Seats: <%= @car.seats %></p>
+        </div>
+        <div class="col">
         <p id="price" data-price=<%= @car.price.round %> >Price per day: £<%= @car.price.round %></p>
         <p>Location: <%= @car.location %></p>
+        </div>
+        </div>
       </div>
 
       <div class="my-2">
@@ -36,9 +41,9 @@
       </div>
 
       <div class="editbuttons ">
-        <%= link_to "Back to cars list", cars_path, class: "btn btn-primary" %>
+        <%= link_to "Back to cars", cars_path, class: "btn btn-info" %>
       <% if @car.user == current_user %>
-        <%= link_to "Edit your car", edit_car_path, class: "btn btn-info" %>
+        <%= link_to "Edit your car", edit_car_path, class: "btn btn-primary" %>
         <%= link_to 'Delete', car_path(@car), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
       <% end %>
       </div>
