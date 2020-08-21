@@ -3,19 +3,20 @@
     <div class="col-lg-6 bg-light shadow p-3">
       <div class="car-description">
         <h1><%= @car.make %> <%= @car.model %></h1>
-           <%# <% @reviews.each do |review| %> %>
-             <%# <% if review.rating <= 1  %> %>
-               <%# <%= image_tag "1star.png", alt: "alttext" %> %>
-               <%# <% elsif review.rating <= 2 %> %>
-               <%# <%= image_tag "2star.png", alt: "alttext" %> %>
-               <%# <% elsif review.rating <= 3 %> %>
-               <%# <%= image_tag "3star.png", alt: "alttext" %> %>
-               <%# <% elsif review.rating <= 4 %> %>
-               <%# <%= image_tag "4star.png", alt: "alttext" %> %>
-               <%# <% else %> %>
-               <%# <%= image_tag "5star.png", alt: "alttext" %> %>
-               <%# <% end %> %>
-           <%# <% end %> %>
+          
+            <% @reviews.each do |review| %> %>
+              <% if review.rating <= 1  %> %>
+                <%= image_tag "1star.png", alt: "alttext" %> %>
+                <% elsif review.rating <= 2 %> %>
+                <%= image_tag "2star.png", alt: "alttext" %> %>
+                <% elsif review.rating <= 3 %> %>
+                <%= image_tag "3star.png", alt: "alttext" %> %>
+                <% elsif review.rating <= 4 %> %>
+                <%= image_tag "4star.png", alt: "alttext" %> %>
+                <% else %> %>
+                <%= image_tag "5star.png", alt: "alttext" %> %>
+                <% end %> %>
+            <% end %> %>
            <p> </p>
 
         
