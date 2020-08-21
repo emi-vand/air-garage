@@ -1,12 +1,12 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:show, :edit, :destroy, :update, :approve, :decline]
+  before_action :set_rental, only: [:edit, :destroy, :update, :approve, :decline]
 
   def index
     @rentals = Rental.all
   end
 
   def show
-    @rentals = Rental.find(params[:id])
+    @rental = Rental.find(params[:id])
   end
 
   def new
@@ -20,7 +20,7 @@ class RentalsController < ApplicationController
     @car = Car.find(params[:car_id])
     @rental.car = @car
     @rental.user = @user
-    @rental.calculated_price = @car.price * (@rental.drop_off-@rental.pick_up)
+    @rental.calculated_price = @car.price * (@rental.drop_off - @rental.pick_up)
     if @rental.save
       redirect_to rental_path(@rental)
     else
