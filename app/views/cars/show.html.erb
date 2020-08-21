@@ -3,6 +3,7 @@
     <div class="col-lg-6 bg-light shadow p-3">
       <div class="car-description">
         <h1><%= @car.make %> <%= @car.model %></h1>
+
             <% if @car.average_rating <= 0  %>
               <%= image_tag "0star.png", alt: "alttext" %>
               <% elsif @car.average_rating <= 1 %>
@@ -26,7 +27,7 @@
 
         <p>Colour: <%= @car.color %></p>
         <p>Seats: <%= @car.seats %></p>
-        <p>Price per day: £<%= @car.price.round %></p>
+        <p id="price" data-price=<%= @car.price.round %> >Price per day: £<%= @car.price.round %></p>
         <p>Location: <%= @car.location %></p>
       </div>
 
@@ -60,4 +61,33 @@
 
 </div>
 
+<script type="text/javascript">
+  const rentalPriceCalculator = () => {
+  const rentalPickUp = document.getElementById("rental_pick_up");
+  const rentalDropOff = document.getElementById("rental_drop_off");
+  const rentalPrice = document.getElementById("rental_price");
+  const price = parseInt(document.getElementById("price").dataset.price);
+
+
+  const handleEvent = (event) => {
+    console.log(event.target.value);
+    const rentalDropOffValue = rentalDropOff.value;
+    const result = ((new Date(rentalDropOffValue) - new Date(rentalPickUp.value)) / 1000 / 60 / 60 / 24);
+    const newPrice = result * price;
+    rentalPrice.innerHTML = `Total Price £${newPrice}`;
+  }
+  rentalPickUp.addEventListener("input", (event) => {
+    handleEvent(event);
+  });
+  rentalDropOff.addEventListener("input", (event) => {
+    handleEvent(event);
+  })
+//   if(document.getElementById("rental_drop_off")){
+// }
+
+
+}
+rentalPriceCalculator();
+
+</script>
 
